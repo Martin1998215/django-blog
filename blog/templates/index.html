@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Blog</title>
+    {% load static %}
+    <link rel="stylesheet" href ="{% static 'home.css' %}">
+</head>
+<body>
+    <div class="home-cover">
+    <ul class="navbar">
+        <div class="navbar-left">
+            <li><h3>PERSONAL BLOG</h3></li>
+            </div>
+            <div class="navbar-right">
+            <li><a href="{% url 'home' %}">HOME</a></li>
+            <li><a href="{% url 'mypost' %}">POSTS</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT</a></li>
+        </div>
+        </ul>
+        <div class="container">
+    <h3>My Blog</h3>
+    <h4>Welcome to my Blog.</h4>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts | Blog</title>
+    {% load static %}
+    <link rel="stylesheet" href ="{% static 'posts.css' %}">
+</head>
+<body>
+    <div class="post-cover">
+        <ul class="navbar">
+            <div class="navbar-left">
+            <li><h3>PERSONAL BLOG</h3></li>
+            </div>
+            <div class="navbar-right">
+            <li><a href="{% url 'home' %}">HOME</a></li>
+            <li><a href="{% url 'mypost' %}">POSTS</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT</a></li>
+            </div>
+            </ul>
+            <div class="container">
+            
+    <h2 class="title">My Blog</h2>
+    <h3 class="subtitle">Posts</h3>
+    <hr>
+    <ul class="main">
+        {% for post in mypost %}  
+            <div class="main-ul"> 
+            <li id="title"><h3>{{ post.title}}</h3></li>
+            <li id="intro"><i></i><h4>{{ post.intro}}</h4></li>
+            <!-- <li id="body">Main Body: {{ item.body}}</li> -->
+            <li id="date"><i>Posted At</i> {{ post.my_date}}</li>
+            <li><a href="{% url 'main' post.slug %}">Read More</a> </li>
+            </div>
+            <br>
+        {% endfor %}    
+    
+    </ul>
+    </div>
+    </div>
+</body>
+</html>

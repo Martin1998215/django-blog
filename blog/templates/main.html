@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details | Blog</title>
+    {% load static %}
+    <link rel="stylesheet" href ="{% static 'main.css' %}">
+</head>
+<body>
+    <div class="details-cover">
+        <ul class="navbar">
+            <div class="navbar-left">
+            <li><h3>PERSONAL BLOG</h3></li>
+            </div>
+            <div class="navbar-right">
+            <li><a href="{% url 'home' %}">HOME</a></li>
+            <li><a href="{% url 'mypost' %}">POSTS</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT</a></li>
+            </div>
+            </ul>
+            <div class="container">
+    <h2 class="title">My Blog</h2>
+    <h3 class="subtitle">Read More</h3>
+    <hr>
+    <ul class="main">
+        {% block content %}  
+            <div class="main-ul"> 
+            <li id="title"><h3>{{ post.title}}</h3></li>
+            <li id="date"><i>Posted At</i> {{ post.my_date}}</li>
+            <li id="intro"><i></i><h4>{{ post.intro}}</h4></li>
+            <li id="body">{{ post.body}}</li>
+
+            <hr>
+
+            <h2 class="comment-title">Add Comment</h2>
+            <form method="post", action="", class="form">
+                {% csrf_token %}
+
+                {{form}}
+
+                <div class="btn">
+                    <button id="btn">Submit</button>
+                </div>
+            </form>
+            <hr>
+
+            <h2 class="comment-subtitle">Comments</h2>
+
+            {% for comment in post.comments.all %}
+            <div class="comment-cover">
+            <li id="comment-name"><h3>{{ comment.name}}</h3></li>
+            <li id="comment-text"><i></i><h4>{{ comment.text}}</h4></li>
+            <li id="comment-date"><i></i> {{ comment.my_date}}</li>
+            </div>
+
+            {% empty %}
+            <h3>No Comments Yet.</h3>
+
+            {% endfor %}
+
+            </div>
+        {% endblock %}    
+    
+    </ul>
+    </div>
+    </div>
+</body>
+</html>
